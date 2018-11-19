@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bavers_UpcPayment>
+            <!-- this is an active module -->
+            <active>true</active>
+            <!-- this module is located in app/code/community code pool -->
+            <codePool>community</codePool>
+            <!-- dependencies for correct module loading order -->
+            <depends>
+                <Mage_Sales />
+                <Mage_Checkout />
+                <Mage_Payment />
+            </depends>
+        </Bavers_UpcPayment>
+    </modules>
+</config>

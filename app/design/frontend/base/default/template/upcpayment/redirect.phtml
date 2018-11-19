@@ -1,0 +1,13 @@
+<html>
+	<body>
+		<?php echo $this->__('You will be redirected to the UPC website in a few seconds.'); ?>
+		<?php echo $this->getFormHtml(); ?>
+
+		<script type="text/javascript">
+		//<![CDATA[
+			var upc_payment_form = document.getElementById('upcform');
+			window.onload = upc_payment_form.submit();
+		//]]>
+		</script>
+	</body>
+</html>

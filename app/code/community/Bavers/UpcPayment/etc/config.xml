@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+       <Bavers_UpcPayment>
+          <!-- module's version information for database updates -->
+          <version>1.2.0.0</version>
+       </Bavers_UpcPayment>
+    </modules>
+ 
+    <global>
+        <!-- IMPORTANT: if you use your own namespace (i.e. CompanyName) you also have to declare blocks group for new module. See topic: http://www.magentocommerce.com/boards/viewthread/22416/#t102732 -->
+        <blocks>
+            <upcpayment>
+                <class>Bavers_UpcPayment_Block</class>
+            </upcpayment>
+        </blocks>
+ 
+        <!-- declare model group for new module -->
+        <models>
+            <!-- model group alias to be used in Mage::getModel('upcpayment/...') -->
+            <upcpayment>
+                <!-- base class name for the model group -->
+                <class>Bavers_UpcPayment_Model</class>
+            </upcpayment>
+        </models>
+ 
+        <helpers>
+            <upcpayment>
+                <class>Bavers_UpcPayment_Helper</class>
+            </upcpayment>
+        </helpers>
+ 
+        <!-- declare resource setup for new module -->
+        <resources>
+            <!-- resource identifier -->
+            <upcpayment_setup>
+                <!-- specify that this resource is a setup resource and used for upgrades -->
+                <setup>
+                    <!-- which module to look for install/upgrade files in -->
+                    <module>Bavers_UpcPayment</module>
+                </setup>
+                <!-- specify database connection for this resource -->
+                <connection>
+                    <!-- do not create new connection, use predefined core setup connection -->
+                    <use>core_setup</use>
+                </connection>
+            </upcpayment_setup>
+            <upcpayment_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </upcpayment_write>
+            <upcpayment_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </upcpayment_read>
+        </resources>
+    </global>
+
+
+    <frontend>
+        <routers>
+            <upcpayment>
+                <use>standard</use>
+                <args>
+                    <module>Bavers_UpcPayment</module>
+                    <frontName>upcpayment</frontName>
+                </args>
+            </upcpayment>
+        </routers>
+        <translate>
+            <modules>
+                <Bavers_UpcPayment>
+                    <files>
+                        <default>Bavers_UpcPayment.csv</default>
+                    </files>
+                </Bavers_UpcPayment>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Bavers_UpcPayment>
+                    <files>
+                        <default>Bavers_UpcPayment.csv</default>
+                    </files>
+                </Bavers_UpcPayment>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <!-- declare default configuration values for this module -->
+    <default>
+        <!-- 'payment' configuration section (tab) -->
+        <payment>
+            <!-- 'upcpayment' configuration group (fieldset) -->
+            <upcpayment>
+                <!-- by default this payment method is inactive -->
+                <active>0</active>
+                <!-- model to handle logic for this payment method -->
+                <model>upcpayment/paymentMethod</model>
+                <!-- order status for new orders paid by this payment method -->
+                <!-- <order_status>processing</order_status> -->
+                <!-- default title for payment checkout page and order view page -->
+                <title>Credit Card (UPC)</title>
+                <cctypes>VI,MC</cctypes>
+                <payment_action>order</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>0</sort_order>
+                <!-- by default test mode is on -->
+                <test>1</test>
+            </upcpayment>
+         </payment>
+    </default>
+</config>
